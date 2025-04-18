@@ -1,0 +1,14 @@
+Un database relazionale è un sistema che organizza i dati in tabelle strutturate in righe (chiamate record) e colonne (chiamate campi). 
+Ogni tabella rappresenta un'entità, come ad esempio Clienti o Ordini, e le colonne contengono gli attributi di quella entità, come nome o prezzo. Le righe, invece,
+rappresentano i dati veri e propri, ossia i singoli record.
+
+Una delle caratteristiche fondamentali dei database relazionali è la relazione tra le tabelle, che avviene attraverso l'uso di chiavi. 
+La chiave primaria (Primary Key) è un identificatore univoco per ogni riga di una tabella, mentre la chiave esterna (Foreign Key) è utilizzata per collegare tabelle diverse, creando relazioni tra i dati. 
+Ad esempio, una tabella "Ordini" potrebbe avere una chiave esterna che fa riferimento alla tabella "Clienti", in modo da associare ogni ordine a un cliente specifico.
+
+Il modello relazionale si basa sull'uso di SQL (Structured Query Language), un linguaggio di query che consente di creare, leggere, aggiornare e cancellare dati all'interno del database (operazioni CRUD). 
+SQL è potente e permette di eseguire interrogazioni complesse sui dati, come unire tabelle diverse, filtrare dati specifici, ordinare informazioni e molto altro.
+
+Quando parliamo di collegare un database a Python, ci riferiamo al processo di connessione tra il programma Python e il database, che permette di eseguire operazioni come 
+l'inserimento di nuovi dati, la lettura di quelli esistenti o la modifica di dati già presenti. Python offre diverse librerie per connettersi a database relazionali. 
+Ad esempio, per lavorare con un database SQLite, che è un database leggero integrato in Python, si può utilizzare il modulo sqlite3.
