@@ -1,2 +1,48 @@
 ## Traccia
 Cos'è un JOIN? Di quali tipi ne esistono? Spiegali teoricamente, puoi aggiungere query esplicative
+
+## Risposta
+Un JOIN in SQL è un'operazione che ci permette di combinare dati provenienti da due o più tabelle in base a una relazione tra di esse. La relazione più comune si stabilisce tramite una chiave primaria in una tabella e una chiave esterna nell'altra. L'operazione di JOIN è fondamentale per recuperare informazioni che sono distribuite su più tabelle ma che sono collegate tra loro.
+
+Tipi di JOIN 
+Esistono vari tipi di JOIN, ognuno dei quali restituisce i dati in modo diverso a seconda della relazione tra le tabelle coinvolte.
+
+1. INNER JOIN
+L'INNER JOIN è il tipo di JOIN più comune. Esso restituisce solo le righe che hanno corrispondenze nelle due tabelle. Se non ci sono corrispondenze tra le tabelle, quelle righe vengono escluse dal risultato.
+
+Esempio pratico:Date due tabelle: Clienti e Ordini. Vogliamo ottenere una lista di tutti i clienti con i rispettivi ordini. Utilizzeremo un INNER JOIN per combinare le tabelle Clienti e Ordini usando il campo id_cliente, che è la chiave primaria nella tabella Clienti e la chiave esterna nella tabella Ordini.
+
+SELECT clienti.nome, ordini.id_ordine
+FROM clienti
+INNER JOIN ordini ON clienti.id_cliente = ordini.id_cliente;
+Questa query restituirà solo i clienti che hanno effettivamente effettuato un ordine. Se un cliente non ha effettuato ordini, non verrà incluso nel risultato.
+
+2. LEFT JOIN (o LEFT OUTER JOIN)
+Il LEFT JOIN restituisce tutte le righe dalla tabella di sinistra (prima tabella) e le righe corrispondenti dalla tabella di destra (seconda tabella). Se non ci sono corrispondenze nella tabella di destra, i campi della tabella di destra saranno popolati con NULL.
+
+Esempio pratico: Supponiamo di voler ottenere una lista di tutti i clienti, anche quelli che non hanno effettuato ordini. In questo caso, utilizziamo un LEFT JOIN per includere anche i clienti senza ordini.
+
+SELECT clienti.nome, ordini.id_ordine
+FROM clienti
+LEFT JOIN ordini ON clienti.id_cliente = ordini.id_cliente;
+Questa query restituirà tutti i clienti, inclusi quelli senza ordini. Per i clienti senza ordini, vedremo NULL al posto degli id_ordine.
+
+3. RIGHT JOIN (o RIGHT OUTER JOIN)
+Il RIGHT JOIN è simile al LEFT JOIN, ma in questo caso restituisce tutte le righe dalla tabella di destra (seconda tabella) e le righe corrispondenti dalla tabella di sinistra (prima tabella). Se non ci sono corrispondenze nella tabella di sinistra, i campi della tabella di sinistra saranno popolati con NULL.
+
+Esempio pratico: Immaginiamo di voler ottenere una lista di ordini, anche quelli che non sono associati a un cliente (anche se, nella maggior parte dei casi, questa situazione non è comune). Utilizziamo un RIGHT JOIN per ottenere tutti gli ordini, anche quelli senza un cliente associato.
+
+SELECT clienti.nome, ordini.id_ordine
+FROM clienti
+RIGHT JOIN ordini ON clienti.id_cliente = ordini.id_cliente;
+Questa query restituirà tutti gli ordini, anche quelli senza un cliente associato, e mostrerà NULL nel campo nome per gli ordini senza cliente.
+
+4. FULL JOIN (o FULL OUTER JOIN)
+Il FULL JOIN restituisce tutte le righe da entrambe le tabelle, con i campi della tabella mancante popolati con NULL quando non ci sono corrispondenze.
+
+Esempio pratico: Supponiamo di voler ottenere una lista di tutti i clienti e ordini, inclusi i clienti senza ordini e gli ordini senza un cliente. Utilizziamo un FULL JOIN per ottenere tutte le righe da entrambe le tabelle.
+
+SELECT clienti.nome, ordini.id_ordine
+FROM clienti
+FULL JOIN ordini ON clienti.id_cliente = ordini.id_cliente;
+Questa query restituirà tutti i clienti e tutti gli ordini, mostrando NULL per i campi quando non ci sono corrispondenze.
