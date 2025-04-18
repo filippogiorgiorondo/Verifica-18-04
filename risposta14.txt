@@ -1,0 +1,60 @@
+## Traccia
+
+##Risposta
+L’astrazione è un concetto su cui si basa la programmazione orientata agli oggetti (OOP) e si riferisce al processo di nascondere i dettagli complessi di un sistema per focalizzarsi sulle sue caratteristiche
+essenziali. In altre parole, l'astrazione ci permette di semplificare la gestione di un sistema, dividendo il corpo dall'azione di un elemento
+
+Con l'astrazione, possiamo creare oggetti e classi che rappresentano concetti generali, senza entrare nei dettagli specifici di implementazione. 
+Ci consente di lavorare a un livello più alto, concentrandoci sull'uso di oggetti e metodi piuttosto che sui dettagli di come vengono implementati internamente.
+
+Tipi di Astrazione
+In OOP, l'astrazione è implementata principalmente in due modi:
+
+Astrarre con le classi e gli oggetti: Una classe può essere vista come un'astrazione di un’entità del mondo reale, mentre un oggetto è una sua istanza. 
+Le classi contengono attributi (stato) e metodi (comportamenti) che ci permettono di interagire con quell'entità senza dover conoscere la sua implementazione interna.
+
+Astrarre con le interfacce (o classi astratte): In molti linguaggi orientati agli oggetti, possiamo creare interfacce o classi astratte che definiscono comportamenti generici ma senza fornire un'implementazione concreta.
+Saranno le classi derivate a implementare i dettagli concreti del comportamento.
+
+Esempio pratico di astrazione
+Consideriamo il concetto di veicolo. In un programma, possiamo definire una classe astratta Veicolo, 
+che fornisce un'interfaccia per tutti i veicoli, ma non implementa direttamente il comportamento. 
+Ogni veicolo specifico (come un'auto o una bicicletta) estenderà la classe Veicolo e implementerà i propri dettagli specifici.
+
+from abc import ABC, abstractmethod
+# Classe astratta che rappresenta un veicolo
+class Veicolo(ABC):
+    @abstractmethod
+    def accendi(self):
+        pass
+
+    @abstractmethod
+    def spegni(self):
+        pass
+
+# Classe concreta che rappresenta una macchina
+class Auto(Veicolo):
+    def accendi(self):
+        print("Accensione dell'auto...")
+
+    def spegni(self):
+        print("Spegnimento dell'auto...")
+
+# Classe concreta che rappresenta una bicicletta
+class Bicicletta(Veicolo):
+    def accendi(self):
+        print("La bicicletta non ha motore da accendere.")
+
+    def spegni(self):
+        print("La bicicletta non ha motore da spegnere.")
+
+# Creazione degli oggetti
+auto = Auto()
+bicicletta = Bicicletta()
+
+# Utilizzo delle funzionalità astratte implementate concretamente
+auto.accendi()      # Stampa: Accensione dell'auto...
+bicicletta.accendi()  # Stampa: La bicicletta non ha motore da accendere.
+
+Grazie all'astrazione possiamo richiamare metodi, funzioni e classi definite in precedenza senza dover riprendere direttamente il loro corpo. 
+Questo concetto è essenziale anche per le funzioni Build-in come il banale print in python. Tale funzione viene richiamata senza dover neessariamente iterare il suo codice.
