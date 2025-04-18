@@ -1,3 +1,6 @@
+## Traccia
+Cos'è un DB relazionale?  Come posso collegare un DB a Python?
+
 Un database relazionale è un sistema che organizza i dati in tabelle strutturate in righe (chiamate record) e colonne (chiamate campi). 
 Ogni tabella rappresenta un'entità, come ad esempio Clienti o Ordini, e le colonne contengono gli attributi di quella entità, come nome o prezzo. Le righe, invece,
 rappresentano i dati veri e propri, ossia i singoli record.
@@ -12,3 +15,35 @@ SQL è potente e permette di eseguire interrogazioni complesse sui dati, come un
 Quando parliamo di collegare un database a Python, ci riferiamo al processo di connessione tra il programma Python e il database, che permette di eseguire operazioni come 
 l'inserimento di nuovi dati, la lettura di quelli esistenti o la modifica di dati già presenti. Python offre diverse librerie per connettersi a database relazionali. 
 Ad esempio, per lavorare con un database SQLite, che è un database leggero integrato in Python, si può utilizzare il modulo sqlite3.
+
+Es:
+import sqlite3
+
+# 1. Connessione al database (verrà creato se non esiste)
+conn = sqlite3.connect('mio_database.db')
+
+# 2. Creazione di un cursore (per eseguire comandi SQL)
+cursor = conn.cursor()
+
+# 3. Creazione di una tabella
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS clienti (
+        id INTEGER PRIMARY KEY,
+        nome TEXT,
+        email TEXT
+    )
+''')
+
+# 4. Inserimento di dati
+cursor.execute("INSERT INTO clienti (nome, email) VALUES (?, ?)", ("Mario", "mario@email.com"))
+
+# 5. Salvataggio dei cambiamenti
+conn.commit()
+
+# 6. Lettura dei dati
+cursor.execute("SELECT * FROM clienti")
+for row in cursor.fetchall():
+    print(row)
+
+# 7. Chiusura della connessione
+conn.close()
