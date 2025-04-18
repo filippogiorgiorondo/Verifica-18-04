@@ -1,6 +1,7 @@
 ## Traccia
 Cos'è un DB relazionale?  Come posso collegare un DB a Python?
 
+## Risposta
 Un database relazionale è un sistema che organizza i dati in tabelle strutturate in righe (chiamate record) e colonne (chiamate campi). 
 Ogni tabella rappresenta un'entità, come ad esempio Clienti o Ordini, e le colonne contengono gli attributi di quella entità, come nome o prezzo. Le righe, invece,
 rappresentano i dati veri e propri, ossia i singoli record.
