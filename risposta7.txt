@@ -1,0 +1,116 @@
+## Traccia
+Quali sono le tre regole fondamentali dell'OOP? Spiegale teoricamente e con esempi pratici, puoi includere codice
+
+## Risposta
+Le tre regole fondamentali della programmazione orientata agli oggetti sono: ereditarietà, polimorfismo, incapsulamento.
+
+### Ereditarietà
+L’ereditarietà è una proprietà che consente di creare una relazione gerarchica tra classi, dove una classe "figlia" eredita attributi e comportamenti da una classe "madre". 
+In questo contesto, la classe figlia può riutilizzare un metodo o specializzarlo mantenendo una struttura comune. Inoltre una classe madre può generare più classi figlie e le classi figlie possono dipendere 
+da più classi madre
+
+
+class Veicolo:
+    def muovi(self):
+        print("Il veicolo si sta muovendo")
+
+class Auto(Veicolo):
+    def muovi(self):
+        print("L'auto sta guidando")
+
+class Bicicletta(Veicolo):
+    def muovi(self):
+        print("La bicicletta sta pedalando")
+
+L'esempio superiore dimostra che:
+Veicolo è una classe base (superclasse).
+Auto e Bicicletta sono classi derivate (sottoclassi) che ereditano da Veicolo.
+ 
+class Cane(Animale):
+    def __init__(self):
+        super().__init__()   # Chiamata manuale al costruttore del padre
+        print("Costruttore di Cane")
+
+c = Cane()
+Output:
+Costruttore di Animale
+Costruttore di Cane
+
+Il costruttore __init__ è l’unico metodo speciale che non viene automaticamente ereditato se viene ridefinito nella sottoclasse.
+Si può comunque richiamare con super() se si vuole mantenere il comportamento della classe genitore.
+
+### Polimorfismo 
+Il polimorfismo è una proprietà fondamentale dell’OOP che consente a oggetti diversi di rispondere allo stesso messaggio (cioè, di eseguire lo stesso metodo) in modi differenti.
+
+In altre parole, lo stesso metodo può comportarsi diversamente a seconda del contesto o del tipo di oggetto su cui viene chiamato.
+
+In python abbiamo come forme di polimorfismo:metodi variadici (overloading); metodi poliformici (duck typing) e overriding.
+Overriding:  avviene quando una classe figlia ridefinisce un metodo ereditato dalla classe madre per adattarlo al proprio comportamento specifico. 
+
+Overloading: è possibile definire più metodi con lo stesso nome, ma con parametri diversi (per tipo o numero).
+
+“Se cammina come un'anatra e starnazza come un'anatra, allora è un'anatra.”
+
+Metodi polimorfici: Questo significa che non importa a quale classe appartiene un oggetto, basta che abbia il metodo richiesto.
+
+Abbiamo anche Operatori polimorfici (polimorfismo degli operatori)
+Gli operatori in Python sono polimorfici, nel senso che il loro comportamento cambia in base al tipo di dato con cui lavorano.
+
+🧪 Esempio:
+Modifica
+print(3 + 4)           Output: 7 (somma tra interi)
+print("a" + "b")      Output: ab (concatenazione di stringhe)
+print([1, 2] + [3])   Output: [1, 2, 3] (unione di liste)
+L'operatore + ha un comportamento diverso: somma, concatena stringhe o unisce liste
+
+class Animale:
+    def parla(self):
+        return "L'animale fa un suono"
+
+class Cane(Animale):
+    def parla(self):
+        return "Il cane abbaia"
+
+class Gatto(Animale):
+    def parla(self):
+        return "Il gatto miagola"
+
+def fai_parlare(animale):
+    print(animale.parla())
+
+fai_parlare(Cane())   Output: Il cane abbaia
+fai_parlare(Gatto())  Output: Il gatto miagola
+
+### Incapsulamento
+L’incapsulamento è un principio fondamentale della programmazione orientata agli oggetti (OOP) che ha a che fare con la gestione della visibilità e dell’accesso ai dati interni di un oggetto.
+
+
+Impedisce che dati sensibili o critici vengano modificati accidentalmente.
+
+Costringe l’uso di metodi controllati (getter/setter) per accedere o cambiare lo stato interno di un oggetto.
+
+Favorisce il principio del "nascondere l’implementazione": l’utente di una classe usa solo ciò che è pubblico, senza preoccuparsi di come funziona dentro.
+
+Incapsulamento -- Modificatori
+
+In OOP, usiamo modificatori d’accesso per indicare se un attributo o metodo è:
+
+Pubblico: accessibile ovunque
+
+Protetto: accessibile solo nella classe e nelle sottoclassi
+
+Privato: accessibile solo all’interno della classe
+
+Incapsulamento -- Visibilità
+
+Locale	Solo all’interno di una funzione/metodo	dichiarata dentro una funzione
+
+Globale	In tutto il file o modulo	dichiarata fuori da funzioni/classi
+
+Nonlocale	Accessibile da funzioni annidate (non è né locale né globale)	con nonlocal
+
+x = 10  # Variabile globale
+
+def funzione():
+    x = 5  # Variabile locale
+    print(x)
