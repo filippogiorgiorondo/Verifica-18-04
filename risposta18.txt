@@ -1,0 +1,81 @@
+## Traccia
+
+## Risposta
+NumPy è una libreria fondamentale per il calcolo scientifico in Python, ed è ampiamente utilizzata per l'analisi dei dati, il machine learning, la manipolazione numerica e molto altro. 
+La sua forza risiede nella capacità di gestire e manipolare array e matrici multidimensionali, supportando operazioni vettoriali e aritmetiche ad alta velocità.
+Non fa parte delle librerie stantard, perciò va scaricato prima di essere importato: "pip install numpy" - "import numpy"
+
+Grazie a questa libreria è possibile operare indexing, fancy indexing e slicing.
+
+L'Indexing è il processo con cui accediamo agli elementi di un array utilizzando un indice specifico. Questo è simile all'indexing nelle liste Python, ma NumPy offre alcune caratteristiche più avanzate. 
+Con NumPy, possiamo effettuare il indexing su array unidimensionali e multidimensionali, ed è possibile usare gli interi, gli slices, e anche boolean masks per accedere agli elementi.
+
+import numpy as np
+arr = np.array([10, 20, 30, 40, 50])
+# Accesso a un singolo elemento
+print(arr[2])  # Restituisce 30
+In questo esempio, stiamo accedendo all'elemento all'indice 2 (terzo elemento) dell'array.
+
+Indexing in un array 2D:
+Quando lavoriamo con array 2D, l'indexing diventa un po' più complesso. Possiamo usare due indici: uno per le righe e uno per le colonne.
+arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(arr[1, 2])  # Restituisce 6 (seconda riga, terza colonna)
+In questo caso, arr[1, 2] restituisce l'elemento che si trova alla seconda riga e terza colonna.
+
+Fancy indexing 
+Il Fancy Indexing è una tecnica avanzata che ci permette di accedere a più elementi di un array, utilizzando una lista di indici, invece di un singolo indice. 
+Questo può essere particolarmente utile quando vogliamo ottenere un sottoinsieme specifico di un array o quando dobbiamo fare operazioni su più valori simultaneamente.
+
+Esempio di Fancy Indexing:
+arr = np.array([10, 20, 30, 40, 50])
+# Selezioniamo più elementi usando un array di indici
+indices = [1, 3, 4]
+print(arr[indices])  # Restituisce [20, 40, 50]
+In questo esempio, invece di accedere a singoli elementi uno per uno, possiamo utilizzare una lista di indici ([1, 3, 4]) per selezionare contemporaneamente gli elementi agli indici 1, 3 e 4.
+
+Fancy Indexing con array 2D:
+Fancy indexing può essere utilizzato anche con array 2D per selezionare intere righe o colonne, o una combinazione di esse.
+arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+# Selezioniamo le righe 0 e 2
+print(arr[[0, 2]])  # Restituisce [[1, 2, 3], [7, 8, 9]]
+In questo caso, stiamo selezionando le righe 0 e 2 dell'array.
+
+Le stesse considerazioni valgono per le colonne:
+
+Slicing
+Lo Slicing è un'altra tecnica fondamentale che consente di ottenere sotto-array da un array più grande. 
+La differenza principale tra slicing e indexing è che lo slicing crea una vista sull'array originale, anziché una copia. 
+Ciò significa che eventuali modifiche apportate al sotto-array influenzeranno anche l'array originale, e viceversa.
+
+Slicing in un array 1D:
+arr = np.array([10, 20, 30, 40, 50])
+# Selezioniamo un sotto-array usando slicing
+print(arr[1:4])  # Restituisce [20 30 40]
+In questo esempio, stiamo selezionando gli elementi dall'indice 1 all'indice 3 (l'indice 4 è escluso), che restituisce il sotto-array [20, 30, 40].
+
+Slicing in un array 2D:
+Il slicing può essere utilizzato anche su array 2D per selezionare righe e colonne specifiche.
+arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+# Selezioniamo tutte le righe, ma solo le colonne da 1 a 2 (l'indice 3 è escluso)
+print(arr[:, 1:3])  # Restituisce [[2, 3], [5, 6], [8, 9]]
+In questo caso, stiamo selezionando tutte le righe, ma solo le colonne con gli indici 1 e 2 (l'indice 3 è escluso).
+
+Funzioni esempio di numpy:
+ndarray: È l'oggetto centrale in NumPy, che rappresenta array multidimensionali. Ogni oggetto ndarray ha attributi come shape, dtype, e ndim che ne definiscono la struttura e le proprietà.
+
+dtype: Questo attributo definisce il tipo di dati contenuti in un array (ad esempio, interi, float, complessi). NumPy supporta una vasta gamma di tipi di dati, rendendo l'array flessibile per diverse applicazioni.
+
+shape: L'attributo shape di un array è una tupla che descrive le dimensioni dell'array. Ad esempio, un array 2D di 3 righe e 4 colonne avrà un shape di (3, 4).
+
+reshape(): Questa funzione consente di modificare la forma di un array senza cambiare i suoi dati. Ad esempio, possiamo convertire un array monodimensionale in un array bidimensionale.
+
+np.random.randint(low, high, size)
+Genera numeri interi casuali nell'intervallo [low, high).
+
+np.linspace(start, stop, num)
+Genera num valori equidistanti tra start e stop.
+
+np.arange(start, stop, step)
+Crea un array con valori da start a stop, con passo step.
