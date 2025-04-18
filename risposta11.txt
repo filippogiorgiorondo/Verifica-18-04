@@ -1,0 +1,2 @@
+## Traccia
+Cos'è un JOIN? Di quali tipi ne esistono? Spiegali teoricamente, puoi aggiungere query esplicative
