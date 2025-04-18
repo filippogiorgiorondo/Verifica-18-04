@@ -1,4 +1,5 @@
 ## Traccia
+Cos'è l'astrazione? Spiegala teoricamente e con esempi pratici, puoi includere codice
 
 ##Risposta
 L’astrazione è un concetto su cui si basa la programmazione orientata agli oggetti (OOP) e si riferisce al processo di nascondere i dettagli complessi di un sistema per focalizzarsi sulle sue caratteristiche
